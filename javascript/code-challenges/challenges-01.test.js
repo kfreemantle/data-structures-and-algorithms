@@ -90,6 +90,8 @@ const addValues = (arr, value) => {
   arr.push(value);
 };
 
+// I ended up using the Array constructor native to javascript to build 'times' number of Array elements, each filled with the callback.  The callback is being fed the addValues function.
+
 const addNumbers = (num, arr, times, callback) => {
   Array(times).fill().forEach(() => {
     callback(arr, num);
