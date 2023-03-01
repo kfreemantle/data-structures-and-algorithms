@@ -1,7 +1,7 @@
 'use strict';
 
 // Time estimate for CC: 3 hrs
-// Start time: 1530
+// Start time: 1530-1617, then started again at 1630.
 // End time:
 // Actual time:
 
@@ -29,8 +29,12 @@ Write a function named addOne that, given an array of numbers, uses map to retur
 ------------------------------------------------------------------------------------------------ */
 
 const addOne = (arr) => {
-  // Solution code here...
-};
+  let output = [];
+  arr.forEach ((value) => {
+    output.push(value + 1);
+  });
+  return output;
+};// I feel like I could pull this off in one line...
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -39,7 +43,7 @@ Write a function named addQuestion that, given an array of strings, uses map to 
 ------------------------------------------------------------------------------------------------ */
 
 const addQuestion = (arr) => {
-  // Solution code here...
+  return arr.map(string => string + '?');  // concat function instead?
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -53,9 +57,13 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 ------------------------------------------------------------------------------------------------ */
 
 const forLoopTwoToThe = (arr) => {
-  // Solution code here...
+  let output = [];
+  for (let i = 0; i < arr.length; i++) {
+    output.push(Math.pow(2, arr[i]));
+  }
+  return output;
 };
-
+// Got some great help from Lauren Perkins on this challenge, and by extension the next few challenges as well.
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
