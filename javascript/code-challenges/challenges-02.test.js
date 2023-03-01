@@ -1,5 +1,10 @@
 'use strict';
 
+// Time estimate for CC: 3 hrs
+// Start time: 1530
+// End time:
+// Actual time:
+
 /* ------------------------------------------------------------------------------------------------
 
 CHALLENGE 1 - Review
@@ -8,14 +13,19 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 
 ------------------------------------------------------------------------------------------------ */
 
-const raisedToTheThird = (arr) => {
-  // Solution code here...
+const raisedToTheThird = (arr) => {  // sticking to the output nomenclature from challenge 1
+  let output = [];
+  arr.forEach ((value) => {
+    output.push(Math.pow(value, 3));
+  });
+  return output;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named addOne that, given an array of numbers, uses map to return a new array with each value simply incremented by 1. 
+Write a function named addOne that, given an array of numbers, uses map to return a new array with each value simply incremented by 1.
 ------------------------------------------------------------------------------------------------ */
 
 const addOne = (arr) => {
