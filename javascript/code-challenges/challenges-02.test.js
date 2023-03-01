@@ -1,9 +1,9 @@
 'use strict';
 
 // Time estimate for CC: 3 hrs
-// Start time: 1530-1617, then started again at 1630.
-// End time:
-// Actual time:
+// Start time: 1530-1617, then started again at 1630-1645, then 2030-2045.
+// End time: 2045
+// Actual time: ~1.25 hrs.
 
 /* ------------------------------------------------------------------------------------------------
 

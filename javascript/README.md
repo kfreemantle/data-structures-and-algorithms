@@ -83,3 +83,11 @@ From the `data-structures-and-algorithms/javascript` folder, execute the followi
 #### Live Tests
 
 Note that when you check your code into GitHub, all of your tests will automatically execute. These results should match your own, and will be found on the  **Actions** tab
+
+
+#### Acknowledgements
+
+- Code Challenge 1: I had a lot of help from TA Michael Treat
+who helped me get unstuck with the callback function in Challenge 4, which in turn got me unstuck for the remaining functions.
+
+- Code Challenge 2: Lauren got me unstuck with Challenge 4 (again with the 4!) and that made the rest of the assignment go MUCH smoother.  
