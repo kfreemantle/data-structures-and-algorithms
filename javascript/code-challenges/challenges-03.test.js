@@ -48,10 +48,12 @@ CHALLENGE 4
 Write a function named oddValues that, given an array of integers as input, uses filter to return an array containing only the odd integers.
 
 For example, oddValues([1,2,3]) returns [1,3].
+
+// This resource from tabnine helped me to understand how to use the modulo operator better: https://www.tabnine.com/academy/javascript/how-to-use-the-array-filter-method-in-javascript/
 ------------------------------------------------------------------------------------------------ */
 
 const oddValues = (arr) => {
-  // Solution code here...
+  return arr.filter (arrayElement => arrayElement % 2 !== 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
