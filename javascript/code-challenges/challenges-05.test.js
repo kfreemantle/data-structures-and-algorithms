@@ -129,6 +129,7 @@ Write a function named reversedString that takes in a string and returns a strin
 
 Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
 ------------------------------------------------------------------------------------------------ */
+arrSheyna = ['T', 'A', 'C'];
 
 const reversedString = (str) => {
   return [...str].reduce((a, b) => b.concat(a));
