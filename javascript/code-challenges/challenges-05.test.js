@@ -24,7 +24,8 @@ Write a function named addValues that, given an array of numbers as input, uses 
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr) => {
-  // Solution code here...
+  let sum = arr.reduce((result, next) => result + next, 0);
+  return sum;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -40,7 +41,8 @@ Write a function named addPurchases that, given an array of objects as input, us
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
-  // Solution code here...
+  let sum = arr.reduce((result, next) => result + next.purchasePrice, 0);
+  return sum;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,7 +54,9 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  return arr.reduce((element) => {
+    return element + 1;
+  }, 0);  // this felt weird at first but once I understood that it starts at zero and increments up by one for every element of the array, then by design it gives the length of an array.
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -112,7 +116,10 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  return arr.reduce((accum, currVal) => {
+    accum.push(currVal.name);
+    return accum;
+  }, []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -124,7 +131,7 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
+  return [...str].reduce((a, b) => b.concat(a));
 };
 
 /* ------------------------------------------------------------------------------------------------
