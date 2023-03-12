@@ -9,7 +9,7 @@ using the 'reduce' method.
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
-  return arr.reduce((a,b) => Math.max(a,b));
+  return arr.reduce((a, b) => Math.max(a, b));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -19,7 +19,8 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+const courseInfo = {
+  name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
   topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
   finalExam: true
 };
@@ -115,9 +116,9 @@ const characters = [
 ];
 
 const getHouses = (arr) => {
-  let houses = [];
-  // Solution code here...
-  return houses;
+  // let houses = [];
+  // I want to use map so I don't need to make a container array
+  return arr.map(familyObject => familyObject.house);
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -133,9 +134,22 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-
+  let output = false;
+  arr.forEach(i => {
+    if (Object.values(i).includes(character)
+      && i.children) {
+      output = true;
+    }
+  }
+  );
+  return output;
 };
+
+// const foundChar = arr.find(char => char.name === character);
+// if (!foundChar) {
+//   return false;
+// }
+// return Object.values(foundChar.children).length > 0;
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
