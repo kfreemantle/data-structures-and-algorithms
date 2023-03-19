@@ -38,7 +38,8 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-  // Solution code here...
+  // I think flat wouldn't work with negative integers but it works with this test
+  return input.flat().filter(int => int === target).length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,7 +53,11 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
-  // Solution code here...
+  // this seems really similar to the previous CC but I don't understand flat very well so I'm going to try map
+  // turns out I can't just 'let sumtotal' I had to 'let sumTotal = 0'
+  let sumTotal = 0;
+  input.map(arr => arr.map(num => sumTotal += num));
+  return sumTotal;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,7 +73,13 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+  // We use map because we want to return an array, and probably the modulus operator to target what's not divisible by 5
+  // still not working, review lecture @ 0934
+  // got semi-unstuck with Phil Chapman's code to reference.  Needed to chain the element mapping to the Math.pow function
+  return input.map(array => {
+    return array.filter(val => typeof val === 'number' && val % 5 === 0).map(e => Math.pow(2, e));
+
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -134,7 +145,9 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
+  // if I use filter we can probably use logical OR and then map to return the results if there's only two gender outputs we care about
+  // reading front to back, we're filtering the input along two dimensions of gender from the object array.  Each gender must strictly equal male or female string.  We're mapping the results to a new array where we take the name property from the object and joining it with the gender property, joined with the ' and ' string in the middle.
+  return data.filter(input => input.gender === 'male' || input.gender === 'female').map(input => `${input.name}`).join(' and ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -144,7 +157,11 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  // Solution code here...
+  // height in space units, stated as strings.  We need to destringify the numbers
+  //
+  return data.reduce((currentShortest, currentChar) => {
+    return Number(currentShortest.height) < Number(currentChar.height) ? currentShortest : currentChar;
+  }).name;
 };
 
 /* ------------------------------------------------------------------------------------------------
