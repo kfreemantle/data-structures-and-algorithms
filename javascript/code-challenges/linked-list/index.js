@@ -2,6 +2,7 @@
 
 
 // Node constructor takes a value and initializes the next pointer as null.  I THINK that's all we need.
+// no update needed for linked-list-insertions
 class Node {
   constructor(value) {
     this.value = value;
@@ -64,6 +65,78 @@ class LinkedList {
     result += 'NULL';
     return result;
   }
+
+  // new methods for linked-list-insertions begin here
+
+  // append function
+
+  append(value) {
+    const newNode = new Node(value);
+
+    if (!this.head) {
+      this.head = newNode;
+      return;
+      // if there is no data coming through for head, we make a newNode on this.head.
+    }
+
+    let currentNode = this.head;
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+    currentNode.next = newNode;
+  }
+
+
+  // insertBefore function
+
+  insertBefore(value, newValue) {
+    const newNode = new Node(newValue);
+
+    if (!this.head) {
+      throw new Error('The list is empty.');
+    }
+
+    if (this.head.value === value) {
+      newNode.next = this.head;
+      this.head = newNode;
+      return;
+    }
+
+    let currentNode = this.head;
+    while (currentNode.next && currentNode.next.value !== value) {
+      currentNode = currentNode.next;
+    }
+
+    if (!currentNode.next) {
+      throw new Error('Value not found.');
+    }
+
+    newNode.next = currentNode.next;
+    currentNode.next = newNode;
+  }
+
+  // insertAfter function
+
+  insertAfter(value, newValue) {
+    const newNode = new Node(newValue);
+
+    if (!this.head) {
+      throw new Error('The list is empty.');
+    }
+
+    let currentNode = this.head;
+    while (currentNode && currentNode.value !== value) {
+      currentNode = currentNode.next;
+    }
+
+    if  (!currentNode) {
+      throw new Error('Value not found.');
+    }
+
+    newNode.next = currentNode.next;
+    currentNode.next = newNode;
+  }
+
 }
 
 module.exports = { Node, LinkedList };
