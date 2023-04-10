@@ -53,3 +53,102 @@ describe('LinkedList', () => {
     expect(list.toString()).toBe('{ 15 } -> { 10 } -> { 5 } -> NULL');
   });
 });
+
+// adding testing suite for the linked-list append, insertBefore and insertAfter
+
+describe('LinkedList append tests: ', () => {
+  // append tests
+  test('Can successfully add a node to the end of the linked list', () => {
+    const list = new LinkedList();
+    list.append(5);
+    list.append(10);
+    list.append(15);
+    expect(list.toString()).toBe('{ 5 } -> { 10 } -> { 15 } -> NULL');
+  });
+
+  test('Can successfully add multiple nodes to the end of a linked list', () => {
+    const list = new LinkedList();
+    list.append(5);
+    list.append(10);
+    list.append(15);
+    expect(list.toString()).toBe('{ 5 } -> { 10 } -> { 15 } -> NULL');
+  });
+});
+
+describe('LinkedList insertBefore tests: ', () => {
+  // insertBefore tests
+  test('Can successfully insert a node before a node located in the middle of a linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(3);
+    list.append(2);
+    list.insertBefore(3, 5);
+    expect(list.toString()).toBe('{ 1 } -> { 5 } -> { 3 } -> { 2 } -> NULL');
+  });
+
+  test('Can successfully insert a node before the first node of a linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(3);
+    list.append(2);
+    list.insertBefore(1, 5);
+    expect(list.toString()).toBe('{ 5 } -> { 1 } -> { 3 } -> { 2 } -> NULL');
+  });
+
+  test('Can successfully insert a node before a node with a duplicated value', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(2);
+    list.append(2);
+    list.insertBefore(2, 5);
+    expect(list.toString()).toBe('{ 1 } -> { 5 } -> { 2 } -> { 2 } -> NULL');
+  });
+
+  test('Throws an error when trying to insert before a value that does not exist in the list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(3);
+    list.append(2);
+    expect(() => list.insertBefore(4, 5)).toThrow('Value not found.');
+  });
+});
+
+describe('LinkedList insertAfter tests: ', () => {
+  // insertAfter tests
+  test('Can successfully insert a node after a node located in the middle of a linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(3);
+    list.append(2);
+    list.insertAfter(3, 5);
+    expect(list.toString()).toBe('{ 1 } -> { 3 } -> { 5 } -> { 2 } -> NULL');
+  });
+
+  test('Can successfully insert a node after the last node of a linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(3);
+    list.append(2);
+    list.insertAfter(2, 5);
+    expect(list.toString()).toBe('{ 1 } -> { 3 } -> { 2 } -> { 5 } -> NULL');
+  });
+
+  test('Can successfully insert a node after a node with a duplicated value', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(2);
+    list.append(2);
+    list.insertAfter(2, 5);
+    expect(list.toString()).toBe('{ 1 } -> { 2 } -> { 5 } -> { 2 } -> NULL');
+  });
+
+  test('Throws an error when trying to insert after a value that does not exist in the list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(3);
+    list.append(2);
+    expect(() => list.insertAfter(4, 5)).toThrow('Value not found.');
+  });
+});
+
+
