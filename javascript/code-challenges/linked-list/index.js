@@ -137,6 +137,38 @@ class LinkedList {
     currentNode.next = newNode;
   }
 
+  // kth from end
+
+  kthFromEnd(k) {
+    if (k < 0) {
+      throw new Error('k must be a positive integer');
+    }
+
+    let currentNode = this.head;
+    let nodesCount = 0;
+
+    while (currentNode !== null) {
+      nodesCount++;
+      currentNode = currentNode.next;
+    }
+
+    if (k >= nodesCount) {
+      throw new Error('k is greater than or equal to the length of the linked list');
+    }
+
+    let targetIndex = nodesCount - k - 1;
+    currentNode = this.head;
+    let currentIndex = 0;
+
+    while (currentIndex !== targetIndex) {
+      currentNode = currentNode.next;
+      currentIndex++;
+    }
+
+    return currentNode.value;
+  }
+
+
 }
 
 module.exports = { Node, LinkedList };

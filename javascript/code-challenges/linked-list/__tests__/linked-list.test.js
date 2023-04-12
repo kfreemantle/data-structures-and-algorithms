@@ -150,5 +150,48 @@ describe('LinkedList insertAfter tests: ', () => {
     expect(() => list.insertAfter(4, 5)).toThrow('Value not found.');
   });
 });
+// adding in kth from end tests
 
+describe('LinkedList kthFromEnd tests: ', () => {
+  test('Can successfully find a node in the middle of the linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(3);
+    list.append(8);
+    list.append(2);
+    expect(list.kthFromEnd(2)).toBe(3);
+  });
 
+  test('Can successfully find the last node of the linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(3);
+    list.append(8);
+    list.append(2);
+    expect(list.kthFromEnd(0)).toBe(2);
+  });
+
+  test('Throws an error when k is greater than the length of the linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(3);
+    list.append(8);
+    list.append(2);
+    expect(() => list.kthFromEnd(6)).toThrow('k is greater than or equal to the length of the linked list');
+  });
+
+  test('Throws an error when k is not a positive integer', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(3);
+    list.append(8);
+    list.append(2);
+    expect(() => list.kthFromEnd(-1)).toThrow('k must be a positive integer');
+  });
+
+  test('Can successfully find the only node in a linked list of size 1', () => {
+    const list = new LinkedList();
+    list.append(1);
+    expect(list.kthFromEnd(0)).toBe(1);
+  });
+});
