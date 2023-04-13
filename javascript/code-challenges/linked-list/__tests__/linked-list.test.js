@@ -195,3 +195,48 @@ describe('LinkedList kthFromEnd tests: ', () => {
     expect(list.kthFromEnd(0)).toBe(1);
   });
 });
+
+describe('LinkedList zipLists tests: ', () => {
+  test('Can successfully zip two lists of the same length', () => {
+    const list1 = new LinkedList();
+    const list2 = new LinkedList();
+
+    list1.append(1);
+    list1.append(3);
+    list1.append(2);
+
+    list2.append(5);
+    list2.append(9);
+    list2.append(4);
+
+    const zippedList = LinkedList.zipLists(list1, list2);
+    expect(zippedList.toString()).toBe('{ 1 } -> { 5 } -> { 3 } -> { 9 } -> { 2 } -> { 4 } -> NULL');
+  });
+
+  test('Can successfully zip two lists of different lengths', () => {
+    const list1 = new LinkedList();
+    const list2 = new LinkedList();
+
+    list1.append(1);
+    list1.append(3);
+
+    list2.append(5);
+    list2.append(9);
+    list2.append(4);
+
+    const zippedList = LinkedList.zipLists(list1, list2);
+    expect(zippedList.toString()).toBe('{ 1 } -> { 5 } -> { 3 } -> { 9 } -> { 4 } -> NULL');
+  });
+
+  test('Can successfully zip two lists when one is empty', () => {
+    const list1 = new LinkedList();
+    const list2 = new LinkedList();
+
+    list1.append(1);
+    list1.append(3);
+    list1.append(2);
+
+    const zippedList = LinkedList.zipLists(list1, list2);
+    expect(zippedList.toString()).toBe('{ 1 } -> { 3 } -> { 2 } -> NULL');
+  });
+});
