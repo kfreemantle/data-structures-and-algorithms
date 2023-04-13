@@ -168,6 +168,33 @@ class LinkedList {
     return currentNode.value;
   }
 
+  // zip list functionality, I hope.  jesus
+  
+  static zipLists(list1, list2) {
+    if (!list1.head) {
+      return list2;
+    }
+    if (!list2.head) {
+      return list1;
+    }
+
+    let currentNode1 = list1.head;
+    let currentNode2 = list2.head;
+    let nextNode1, nextNode2;
+
+    while (currentNode1 && currentNode2) {
+      nextNode1 = currentNode1.next;
+      nextNode2 = currentNode2.next;
+
+      currentNode1.next = currentNode2;
+      currentNode2.next = nextNode1;
+
+      currentNode1 = nextNode1;
+      currentNode2 = nextNode2;
+    }
+
+    return list1;
+  }
 
 }
 
