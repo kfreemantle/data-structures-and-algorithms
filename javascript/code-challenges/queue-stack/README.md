@@ -1,28 +1,26 @@
-# Stacks and Queues: psuedoQueue
+# Stack Queue Animal Shelter
 
-## Feature Tasks
+A code challenge to practice using stacks and queues.
 
-Create a new class called pseudo queue.  Do not use an existing Queue.  Instead, this PseudoQueue class will implement our standard queue interface (the two methods listed below).Internally, utilize 2 Stack instances to create and manage the queue.
-Methods:
-enqueue
-Arguments: value
-Inserts a value into the PseudoQueue, using a first-in, first-out approach.
-dequeue
-Arguments: none
-Extracts a value from the PseudoQueue, using a first-in, first-out approach.
+![UML](./path/to/your/uml/image.png)
 
-The objective for this code challenge is to use the stack data structure to manipulate queues.
+## Challenge
 
-### Whiteboard UML
+Create a class called `AnimalShelter` which holds only dogs and cats. The shelter operates using a first-in, first-out approach. Implement methods for enqueueing and dequeueing animals based on the given preference for dogs or cats.
+
+## Approach & Efficiency
+
+We use two separate queues to store dogs and cats. This way, we can maintain the order of arrival for each species. The `enqueue` method checks the animal's species and pushes it to the appropriate queue, while the `dequeue` method removes and returns the first animal from the specified queue.
+
+The time complexity for enqueueing and dequeueing operations is BigO(1).  The space complexity is Big0(1n).
+
+
+### Tests
+
+Enqueue animals and maintain the order for dogs and cats separately.
+Dequeue with invalid preference returns null.
+Enqueue with invalid species does not add the animal to the shelter.
+
+#### UML
 
 ![UML](./img/CC11UML.png)
-
-### Approach/Efficiency
-
-Big O:
-- time: O(2n)
-- space: O(1)
-
-#### Tests
-
-Run npm test psuedoQueue.test.js in the project folder.
