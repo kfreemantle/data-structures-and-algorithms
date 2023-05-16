@@ -14,3 +14,7 @@ With Merge Sort you have a worst case O(n log n) complexity, while built in meth
 
 ![UML](mergeSortUML.png)
 
+#### Big O
+
+Time: O(n log n)
+Space: O(n)
