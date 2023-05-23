@@ -74,6 +74,46 @@ class Graph {
     // The size is the number of keys (nodes) in the adjacency list
     return this.adjacencyList.size;
   }
+
+  breadthFirst(startNode) {
+    if (!this.adjacencyList.has(startNode)) {
+      throw new Error('Start node does not exist in the graph');
+    }
+
+    // Initialize the queue with the start node
+    let queue = [];
+    queue.push(startNode);
+
+    // Create a Set to hold visited nodes
+    let visitedNodes = new Set();
+    visitedNodes.add(startNode);
+
+    // Create an array to store the order of visited nodes
+    let orderOfVisitedNodes = [];
+
+    while (queue.length > 0) {
+      // Dequeue the first node in the queue
+      let currentNode = queue.shift();
+
+      // Add the current node to the order of visited nodes
+      orderOfVisitedNodes.push(currentNode);
+
+      // Get the neighbors of the current node
+      let neighbors = this.getNeighbors(currentNode);
+
+      for (let edge of neighbors) {
+        // If this node has not been visited before, add it to the queue and the set of visited nodes
+        if (!visitedNodes.has(edge.node)) {
+          visitedNodes.add(edge.node);
+          queue.push(edge.node);
+        }
+      }
+    }
+
+    // Return the order of visited nodes
+    return orderOfVisitedNodes;
+  }
 }
+
 
 module.exports = Graph;

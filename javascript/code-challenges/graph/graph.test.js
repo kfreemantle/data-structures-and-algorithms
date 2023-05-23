@@ -65,4 +65,40 @@ describe('Graph', function () {
       expect(graph.size()).toBe(2);
     });
   });
+
+  // Describe the test suite for the breadthFirst method
+  describe('#breadthFirst()', function () {
+    it('should return nodes in the order they were visited', function () {
+      let graph = new Graph();
+      let nodeA = graph.addNode('A');
+      let nodeB = graph.addNode('B');
+      let nodeC = graph.addNode('C');
+      let nodeD = graph.addNode('D');
+      let nodeE = graph.addNode('E');
+
+      graph.addEdge(nodeA, nodeB);
+      graph.addEdge(nodeB, nodeC);
+      graph.addEdge(nodeC, nodeD);
+      graph.addEdge(nodeD, nodeE);
+
+      // Check if the breadth first traversal is correct
+      expect(graph.breadthFirst(nodeA)).toEqual([nodeA, nodeB, nodeC, nodeD, nodeE]);
+    });
+
+    it('should throw an error for a non-existent start node', function () {
+      let graph = new Graph();
+      let nodeA = graph.addNode('A');
+      let nodeB = new Node('B'); // nodeB is not added to the graph
+
+      expect(() => graph.breadthFirst(nodeB)).toThrow('Start node does not exist in the graph');
+    });
+
+
+    it('should return only the start node if it has no neighbors', function () {
+      let graph = new Graph();
+      let nodeA = graph.addNode('A');
+
+      expect(graph.breadthFirst(nodeA)).toEqual([nodeA]);
+    });
+  });
 });
