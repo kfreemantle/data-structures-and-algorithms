@@ -101,4 +101,28 @@ describe('Graph', function () {
       expect(graph.breadthFirst(nodeA)).toEqual([nodeA]);
     });
   });
+  describe('#businessTrip()', function () {
+    it('should calculate the cost of a trip', function () {
+      let graph = new Graph();
+      let metroville = graph.addNode('Metroville');
+      let pandora = graph.addNode('Pandora');
+      graph.addEdge(metroville, pandora, 82);
+
+      let cost = graph.businessTrip(['Metroville', 'Pandora']);
+
+      expect(cost).toBe(82);
+    });
+
+    it('should return null if a trip is not possible', function () {
+      let graph = new Graph();
+      let metroville = graph.addNode('Metroville');
+      let pandora = graph.addNode('Pandora');
+      graph.addEdge(metroville, pandora, 82);
+
+      let cost = graph.businessTrip(['Metroville', 'Narnia']);
+
+      expect(cost).toBeNull();
+    });
+  });
+
 });

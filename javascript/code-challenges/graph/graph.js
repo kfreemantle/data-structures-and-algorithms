@@ -113,6 +113,51 @@ class Graph {
     // Return the order of visited nodes
     return orderOfVisitedNodes;
   }
+
+  businessTrip(cities) {
+    let totalCost = 0;
+
+    for (let i = 0; i < cities.length - 1; i++) {
+      let startNode = this._findNode(cities[i]);
+      let endNode = this._findNode(cities[i + 1]);
+
+      if (!startNode || !endNode) {
+        return null;
+      }
+
+      let edge = this._findEdge(startNode, endNode);
+
+      if (!edge) {
+        return null;
+      }
+
+      totalCost += edge.weight;
+    }
+
+    return totalCost;
+  }
+
+  _findNode(value) {
+    for (let node of this.adjacencyList.keys()) {
+      if (node.value === value) {
+        return node;
+      }
+    }
+
+    return null;
+  }
+
+  _findEdge(startNode, endNode) {
+    let edges = this.adjacencyList.get(startNode);
+
+    for (let edge of edges) {
+      if (edge.node === endNode) {
+        return edge;
+      }
+    }
+
+    return null;
+  }
 }
 
 
