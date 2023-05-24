@@ -75,6 +75,32 @@ class Graph {
     return this.adjacencyList.size;
   }
 
+  depthFirst(startNode) {
+    if (!startNode) return null;
+
+    let visitedNodes = new Set();
+    let output = [];
+    let stack = []; // LIFO
+    stack.push(startNode);
+    visitedNodes.add(startNode);
+
+    while (stack.length) {
+      let currentNode = stack.pop();
+      output.push(currentNode.value);
+
+      let neighbors = this.adjacencyList.get(currentNode);
+      for (let neighbor of neighbors) {
+        let neighborNode = neighbor.node;
+        if (!visitedNodes.has(neighborNode)) {
+          stack.push(neighborNode);
+          visitedNodes.add(neighborNode);
+        }
+      }
+    }
+
+    return output;
+  }
+
   breadthFirst(startNode) {
     if (!this.adjacencyList.has(startNode)) {
       throw new Error('Start node does not exist in the graph');

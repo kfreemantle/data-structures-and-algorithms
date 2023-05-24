@@ -125,4 +125,23 @@ describe('Graph', function () {
     });
   });
 
+  describe('#depthFirst()', function () {
+    it('should perform a depth first traversal', function () {
+      let graph = new Graph();
+      let nodeA = graph.addNode('A');
+      let nodeB = graph.addNode('B');
+      let nodeC = graph.addNode('C');
+      let nodeD = graph.addNode('D');
+
+      graph.addEdge(nodeA, nodeB);
+      graph.addEdge(nodeA, nodeC);
+      graph.addEdge(nodeB, nodeD);
+
+      let result = graph.depthFirst(nodeA);
+
+      expect(result).toEqual(['A', 'C', 'B', 'D']);
+    });
+  });
+
+
 });
